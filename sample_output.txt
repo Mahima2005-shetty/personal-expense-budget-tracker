@@ -1,0 +1,14 @@
+VEDA TECHNOLOGY - PERSONAL EXPENSE & BUDGET TRACKER
+
+1. Expense Management
+2. Budget Management
+3. Reports
+0. Exit
+
+Example:
+Expense Management -> View expenses
+
+ID   Date          Name                     Category                Amount
+1    2026-10-01    Groceries                Food                  2500.00
+2    2026-10-02    Bus Pass                 Transport             1200.00
+3    2026-10-03    Internet Bill            Bills                  799.00
