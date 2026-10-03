@@ -1,120 +1,193 @@
 # Personal Expense & Budget Tracker
 
-A console-based Python application developed for the VEDA Technology internship task.
+A Python-based Personal Expense & Budget Tracker with both a command-line interface and a Flask web application.
 
-## Description
+## Project Overview
 
-The Personal Expense & Budget Tracker allows users to record daily expenses, organize expenses by category, define monthly budgets, search/filter records, and generate spending summaries.
+The Personal Expense & Budget Tracker helps users record, organize, and analyze their daily expenses.
+
+The application provides expense management, category-wise tracking, monthly budgets, search and filtering, and spending reports.
 
 ## Features
 
-- Add expenses
+### Expense Management
+
+- Add new expenses
 - View all expenses
-- Edit expenses
+- Edit existing expenses
 - Delete expenses
-- Search expenses
-- Filter by category
-- Filter by month
+- Store expense details such as:
+  - Expense name
+  - Category
+  - Amount
+  - Date
+  - Notes
+
+### Search & Filtering
+
+- Search expenses by name
+- Search by category
+- Search by notes
+- Filter expenses by category
+
+### Budget Management
+
+- Set a monthly budget
+- Store budgets by month
+- Calculate total monthly spending
+- Calculate remaining budget
+
+### Reports
+
 - Category-wise spending summary
-- Monthly spending summary
-- Set monthly budgets
-- Check budget status
-- Overall spending report
-- Monthly spending report
-- JSON data storage
-- Date validation
-- Exception handling
-- Input validation
+- Total spending calculation
+- Monthly spending information
 
-## Technology
+### Data Storage
 
-- Python 3
-- JSON
-- datetime
-- collections
-- Git
-- GitHub
-- VS Code / PyCharm
-
-## Project Structure
+The application uses JSON files for persistent data storage.
 
 ```text
+data/
+├── expenses.json
+└── budgets.json
+Web Application
+
+The project includes a Flask-based web interface.
+
+Main web pages:
+
+Dashboard
+Expenses
+Add Expense
+Edit Expense
+Budget
+Reports
+Technology Stack
+Backend
+Python
+Flask
+Frontend
+HTML
+CSS
+Jinja2 Templates
+Data Storage
+JSON
+Development Tools
+Git
+GitHub
+Visual Studio Code / Notepad
+PowerShell
+Project Structure
 personal-expense-budget-tracker/
+│
+├── app.py
 ├── main.py
 ├── expense_manager.py
 ├── budget_manager.py
 ├── report_manager.py
 ├── utils.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+├── sample_output.txt
+│
 ├── data/
 │   ├── expenses.json
 │   └── budgets.json
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
+│
+└── templates/
+    ├── index.html
+    ├── expenses.html
+    ├── add_expense.html
+    ├── edit_expense.html
+    ├── budget.html
+    └── reports.html
+Installation
 
-## How to Run
+Clone the repository:
 
-Open PowerShell/Command Prompt in the project folder:
+git clone https://github.com/Mahima2005-shetty/personal-expense-budget-tracker.git
 
-```powershell
+Move into the project directory:
+
+cd personal-expense-budget-tracker
+
+Create a virtual environment:
+
+python -m venv venv
+
+Activate the virtual environment on Windows:
+
+.\venv\Scripts\Activate.ps1
+
+Install dependencies:
+
+pip install -r requirements.txt
+Run the Console Application
+
+Run:
+
 python main.py
-```
+Run the Web Application
 
-If `python` is not recognized, try:
+Run:
 
-```powershell
-py main.py
-```
+python app.py
 
-## Data Storage
+The Flask application will start at:
 
-Expense records are stored in:
+http://127.0.0.1:5000
 
-```text
-data/expenses.json
-```
+Open the address in a web browser.
 
-Monthly budgets are stored in:
+Example Expense Data
+{
+    "id": 1,
+    "name": "Groceries",
+    "category": "Food",
+    "amount": 2500,
+    "date": "2026-10-01",
+    "note": "Monthly groceries"
+}
+Example Budget
+{
+    "2026-10": 10000
+}
+Learning Outcomes
 
-```text
-data/budgets.json
-```
+This project demonstrates the use of:
 
-The files are created automatically if they do not exist.
+Python functions
+Lists and dictionaries
+File handling
+JSON data processing
+CSV/JSON concepts
+Date and time handling
+Exception handling
+Input validation
+Flask routing
+HTML templates
+CRUD operations
+Search and filtering
+Git and GitHub
+Future Enhancements
 
-## Example Workflow
+Possible future improvements include:
 
-1. Select `1. Expense Management`.
-2. Add an expense.
-3. View the expense list.
-4. Set a monthly budget from `2. Budget Management`.
-5. Check the budget status.
-6. Open Reports to see category and monthly summaries.
+User authentication
+SQLite/MySQL database
+Interactive charts
+Export reports to CSV/PDF
+Advanced date-range filtering
+Responsive mobile interface
+REST API support
+Author
 
-## Validation
+Mahima
 
-The application validates:
+Repository
 
-- Empty expense names/categories
-- Positive amounts
-- Date format: `YYYY-MM-DD`
-- Month format: `YYYY-MM`
-- Invalid menu choices
-- Invalid numeric input
-- Missing/corrupted JSON data
+GitHub:
 
-## GitHub
-
-After testing locally, initialize Git and push the project to a GitHub repository.
-
-Example:
-
-```powershell
-git init
-git add .
-git commit -m "Create Personal Expense and Budget Tracker"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/personal-expense-budget-tracker.git
-git push -u origin main
-```
+https://github.com/Mahima2005-shetty/personal-expense-budget-tracker
