@@ -27,8 +27,16 @@
         "id": 5,
         "name": "College Books",
         "category": "Education",
-        "amount": 1800.0,
+        "amount": 2000.0,
         "date": "2026-10-03",
         "note": "Updated semester books"
+    },
+    {
+        "id": 6,
+        "name": "Coffee",
+        "category": "Food",
+        "amount": 150.0,
+        "date": "2026-10-03",
+        "note": "Evening coffee"
     }
 ]
