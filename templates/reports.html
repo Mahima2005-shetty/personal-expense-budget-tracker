@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Reports</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 85%;
+            margin: 40px auto;
+        }
+
+        h1 {
+            color: #222;
+        }
+
+        .nav {
+            margin-bottom: 25px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            margin-right: 15px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        .total {
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/expenses">Expenses</a>
+        <a href="/add-expense">Add Expense</a>
+        <a href="/budget">Budget</a>
+        <a href="/reports">Reports</a>
+    </div>
+
+    <h1>Expense Reports</h1>
+
+    <div class="card">
+        <p class="total">
+            Total Spending: ₹{{ "%.2f"|format(total) }}
+        </p>
+    </div>
+
+    <div class="card">
+
+        <h2>Category-wise Spending</h2>
+
+        {% if category_totals %}
+
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Total Amount</th>
+            </tr>
+
+            {% for category, amount in category_totals.items() %}
+            <tr>
+                <td>{{ category }}</td>
+                <td>₹{{ "%.2f"|format(amount) }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>No expenses available for the report.</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

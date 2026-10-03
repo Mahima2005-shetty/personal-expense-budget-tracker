@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #1f2937;
+            color: white;
+            padding: 20px 40px;
+        }
+
+        header h1 {
+            margin: 0 0 12px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #555;
+        }
+
+        .amount {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-top: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #f1f5f9;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 16px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        @media (max-width: 700px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Personal Expense & Budget Tracker</h1>
+
+    <nav>
+        <a href="/">Dashboard</a>
+        <a href="/expenses">Expenses</a>
+        <a href="/add-expense">Add Expense</a>
+        <a href="/budget">Budget</a>
+        <a href="/reports">Reports</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h2>Dashboard</h2>
+
+    <p>Current Month: <strong>{{ current_month }}</strong></p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Monthly Budget</h3>
+            <div class="amount">₹{{ "%.2f"|format(budget) }}</div>
+        </div>
+
+        <div class="card">
+            <h3>Total Spent</h3>
+            <div class="amount">₹{{ "%.2f"|format(total_spent) }}</div>
+        </div>
+
+        <div class="card">
+            <h3>Remaining</h3>
+            <div class="amount">₹{{ "%.2f"|format(remaining) }}</div>
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <h2>Recent Expenses</h2>
+
+        {% if expenses %}
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+
+            {% for expense in expenses %}
+
+            <tr>
+                <td>{{ expense.name }}</td>
+                <td>{{ expense.category }}</td>
+                <td>₹{{ "%.2f"|format(expense.amount) }}</td>
+                <td>{{ expense.date }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>No expenses recorded for this month.</p>
+
+        {% endif %}
+
+    </div>
+
+    <div class="section">
+
+        <h2>Category-wise Spending</h2>
+
+        {% if categories %}
+
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Total</th>
+            </tr>
+
+            {% for category, amount in categories.items() %}
+
+            <tr>
+                <td>{{ category }}</td>
+                <td>₹{{ "%.2f"|format(amount) }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>No category data available.</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

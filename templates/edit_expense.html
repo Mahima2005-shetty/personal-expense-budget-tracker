@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Expense</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+        }
+
+        .container {
+            width: 600px;
+            max-width: 90%;
+            margin: 40px auto;
+        }
+
+        .nav {
+            margin-bottom: 25px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            margin-right: 15px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #2563eb;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .cancel {
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 10px;
+            padding: 11px 20px;
+            border-radius: 5px;
+            background: #6b7280;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/expenses">Expenses</a>
+        <a href="/add-expense">Add Expense</a>
+        <a href="/budget">Budget</a>
+        <a href="/reports">Reports</a>
+    </div>
+
+    <div class="card">
+
+        <h1>Edit Expense</h1>
+
+        <form method="POST">
+
+            <label for="name">Expense Name</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                value="{{ expense.name }}"
+                required
+            >
+
+
+            <label for="category">Category</label>
+
+            <input
+                type="text"
+                id="category"
+                name="category"
+                value="{{ expense.category }}"
+                required
+            >
+
+
+            <label for="amount">Amount</label>
+
+            <input
+                type="number"
+                id="amount"
+                name="amount"
+                step="0.01"
+                min="0"
+                value="{{ expense.amount }}"
+                required
+            >
+
+
+            <label for="date">Date</label>
+
+            <input
+                type="date"
+                id="date"
+                name="date"
+                value="{{ expense.date }}"
+                required
+            >
+
+
+            <label for="note">Note</label>
+
+            <textarea
+                id="note"
+                name="note"
+                rows="4"
+            >{{ expense.note }}</textarea>
+
+
+            <button type="submit">
+                Update Expense
+            </button>
+
+            <a
+                class="cancel"
+                href="/expenses"
+            >
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
